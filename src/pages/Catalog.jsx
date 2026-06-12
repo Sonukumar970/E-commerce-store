@@ -1,11 +1,13 @@
+import { useEffect } from "react";
+
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 
 import ProductCard from "../components/ProductCard";
-
 import RecentlyViewed from "../components/RecentlyViewed";
 
 import {
+  fetchProducts,
   filterByCategory,
   filterByPrice,
   resetFilters,
@@ -18,6 +20,18 @@ function Catalog() {
     (state) => state.products.filtered
   );
 
+  const loading = useSelector(
+    (state) => state.products.loading
+  );
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
+
+  if (loading) {
+    return <h2>Loading Products...</h2>;
+  }
+
   return (
     <>
       <h1>Product Catalog</h1>
@@ -27,7 +41,7 @@ function Catalog() {
           onClick={() =>
             dispatch(
               filterByCategory(
-                "Electronics"
+                "electronics"
               )
             )
           }

@@ -12,17 +12,37 @@ function Navbar() {
 
   return (
     <nav className="navbar">
-      <h2>E-Commerce Store</h2>
+      <Link
+        to="/"
+        className="logo"
+      >
+        🛍️ ShopHub
+      </Link>
+
+      <div className="search-bar">
+        <input
+          type="text"
+          placeholder="Search products..."
+        />
+      </div>
 
       <div className="nav-links">
-        <Link to="/">Catalog</Link>
-
-        <Link to="/cart">
-          Cart ({cartCount})
+        <Link to="/">
+          🏠 Home
         </Link>
 
         <Link to="/wishlist">
-          Wishlist ({wishlistCount})
+          ❤️ Wishlist
+          <span className="badge">
+            {wishlistCount}
+          </span>
+        </Link>
+
+        <Link to="/cart">
+          🛒 Cart
+          <span className="badge">
+            {cartCount}
+          </span>
         </Link>
       </div>
     </nav>

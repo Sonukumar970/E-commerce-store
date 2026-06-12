@@ -7,12 +7,8 @@ import {
 } from "react-redux";
 
 import { addToCart } from "../features/cart/cartSlice";
-
 import { addToWishlist } from "../features/wishlist/wishlistSlice";
-
 import { addViewedProduct } from "../features/recentlyViewed/recentlyViewedSlice";
-
-import Reviews from "../components/Reviews";
 
 function ProductDetail() {
   const { id } = useParams();
@@ -36,49 +32,64 @@ function ProductDetail() {
 
   if (!product) {
     return (
-      <h2>
-        Product Not Found
-      </h2>
+      <h2>Product Not Found</h2>
     );
   }
 
   return (
     <div className="detail-page">
-      <img
-        src={product.image}
-        alt={product.name}
-        width="300"
-      />
+      <div className="detail-container">
+        <div className="detail-image">
+          <img
+            src={product.image}
+            alt={product.title}
+          />
+        </div>
 
-      <h1>{product.name}</h1>
+        <div className="detail-info">
+          <span className="category">
+            {product.category}
+          </span>
 
-      <h2>${product.price}</h2>
+          <h1>
+            {product.title}
+          </h1>
 
-      <p>
-        {product.description}
-      </p>
+          <h2 className="detail-price">
+            ${product.price}
+          </h2>
 
-      <button
-        onClick={() =>
-          dispatch(addToCart(product))
-        }
-      >
-        Add To Cart
-      </button>
+          <p>
+            {product.description}
+          </p>
 
-      <button
-        onClick={() =>
-          dispatch(
-            addToWishlist(product)
-          )
-        }
-      >
-        Add To Wishlist
-      </button>
+          <div className="detail-buttons">
+            <button
+              className="add-cart-btn"
+              onClick={() =>
+                dispatch(
+                  addToCart(product)
+                )
+              }
+            >
+              🛒 Add To Cart
+            </button>
 
-      <Reviews
-        reviews={product.reviews}
-      />
+            <button
+              className="wishlist-btn"
+              onClick={() =>
+                dispatch(
+                  addToWishlist(
+                    product
+                  )
+                )
+              }
+            >
+              ❤️ Wishlist
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
