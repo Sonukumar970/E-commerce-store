@@ -21,12 +21,6 @@ function Wishlist() {
       {wishlistItems.length === 0 ? (
         <div className="empty-wishlist">
           <h2>No Products In Wishlist</h2>
-
-          <Link to="/">
-            <button>
-              Browse Products
-            </button>
-          </Link>
         </div>
       ) : (
         wishlistItems.map((item) => (
@@ -34,8 +28,14 @@ function Wishlist() {
             key={item.id}
             className="wishlist-card"
           >
-            <div>
-              <h3>{item.name}</h3>
+            <img
+              src={item.image}
+              alt={item.title}
+              className="wishlist-image"
+            />
+
+            <div className="wishlist-info">
+              <h3>{item.title}</h3>
 
               <p>
                 Price: ${item.price}
