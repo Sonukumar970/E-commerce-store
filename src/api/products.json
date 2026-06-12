@@ -1,0 +1,23 @@
+[{
+ 
+  "id": 1,
+  "name": "Laptop",
+  "price": 800,
+  "category": "Electronics",
+  "description": "Gaming Laptop",
+  "image": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600"
+,
+  "reviews": [
+    {
+      "user": "Rahul",
+      "rating": 5,
+      "comment": "Excellent Laptop"
+    },
+    {
+      "user": "Aman",
+      "rating": 4,
+      "comment": "Very Good Product"
+    }
+  ]
+}
+]
