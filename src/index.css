@@ -776,3 +776,81 @@ h1 {
     justify-content: center;
   }
 }
+/* ===== DARK MODE ===== */
+
+.dark {
+  background: #111827;
+  min-height: 100vh;
+  color: white;
+}
+
+.dark .navbar {
+  background: #000;
+}
+
+.dark .card,
+.dark .detail-container,
+.dark .cart-item,
+.dark .cart-summary,
+.dark .wishlist-card,
+.dark .checkout-form,
+.dark .order-summary,
+.dark .recent-card {
+  background: #1f2937;
+  color: white;
+}
+
+.dark .search-container input {
+  background: #1f2937;
+  color: white;
+  border-color: #374151;
+}
+
+.dark .filters button {
+  background: #1f2937;
+  color: white;
+  border-color: white;
+}
+
+.dark .price,
+.dark .detail-price,
+.dark .subtotal {
+  color: #60a5fa;
+}
+
+.dark-btn {
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+.dark-btn {
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: white;
+}
+
+.dark-btn:hover {
+  transform: scale(1.1);
+}
+
+.dark .navbar {
+  background: #0f172a;
+}
+
+.dark .logo,
+.dark .nav-links a {
+  color: white;
+}
+
+.dark .search-bar input {
+  background: #1f2937;
+  color: white;
+  border: 1px solid #374151;
+}
+
+.dark .badge {
+  background: #3b82f6;
+}

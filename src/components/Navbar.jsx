@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-function Navbar() {
+function Navbar({
+  darkMode,
+  setDarkMode,
+}) {
   const cartCount = useSelector(
     (state) => state.cart.items.length
   );
@@ -18,13 +21,6 @@ function Navbar() {
       >
         🛍️ ShopHub
       </Link>
-
-      <div className="search-bar">
-        <input
-          type="text"
-          placeholder="Search products..."
-        />
-      </div>
 
       <div className="nav-links">
         <Link to="/">
@@ -44,6 +40,15 @@ function Navbar() {
             {cartCount}
           </span>
         </Link>
+
+        <button
+          className="dark-btn"
+          onClick={() =>
+            setDarkMode(!darkMode)
+          }
+        >
+          {darkMode ? "☀️" : "🌙"}
+        </button>
       </div>
     </nav>
   );

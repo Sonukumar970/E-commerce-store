@@ -1,10 +1,18 @@
-import React, { Suspense } from "react";
-import { Routes, Route } from "react-router-dom";
+import React, {
+  Suspense,
+  useState,
+  useEffect,
+} from "react";
+
+import {
+  Routes,
+  Route,
+} from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Catalog from "./pages/Catalog";
-import "./index.css";
 
+import "./index.css";
 
 const ProductDetail = React.lazy(() =>
   import("./pages/ProductDetail")
@@ -23,35 +31,74 @@ const Checkout = React.lazy(() =>
 );
 
 function App() {
+  const [darkMode, setDarkMode] =
+    useState(
+      localStorage.getItem(
+        "darkMode"
+      ) === "true"
+    );
+
+  useEffect(() => {
+    localStorage.setItem(
+      "darkMode",
+      darkMode
+    );
+  }, [darkMode]);
+
   return (
-    <>
-      <Navbar />
+    <div
+      className={
+        darkMode ? "dark" : ""
+      }
+    >
+      <Navbar
+        darkMode={darkMode}
+        setDarkMode={
+          setDarkMode
+        }
+      />
 
       <div className="container">
-        <Suspense fallback={<h2>Loading...</h2>}>
+        <Suspense
+          fallback={
+            <h2>Loading...</h2>
+          }
+        >
           <Routes>
-            <Route path="/" element={<Catalog />} />
+            <Route
+              path="/"
+              element={<Catalog />}
+            />
 
             <Route
               path="/product/:id"
-              element={<ProductDetail />}
+              element={
+                <ProductDetail />
+              }
             />
 
-            <Route path="/cart" element={<Cart />} />
+            <Route
+              path="/cart"
+              element={<Cart />}
+            />
 
             <Route
               path="/wishlist"
-              element={<Wishlist />}
+              element={
+                <Wishlist />
+              }
             />
 
             <Route
               path="/checkout"
-              element={<Checkout />}
+              element={
+                <Checkout />
+              }
             />
           </Routes>
         </Suspense>
       </div>
-    </>
+    </div>
   );
 }
 
