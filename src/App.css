@@ -417,3 +417,39 @@ h1 {
 .remove-wishlist-btn:hover {
   background: #b91c1c;
 }
+.filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 25px 0;
+}
+
+.filters button {
+  padding: 12px 18px;
+  border: none;
+  border-radius: 30px;
+
+  background: white;
+  color: #111827;
+
+  font-weight: 600;
+  cursor: pointer;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,.08);
+  transition: 0.3s;
+}
+
+.filters button:hover {
+  background: #2563eb;
+  color: white;
+  transform: translateY(-2px);
+}
+
+.product-count {
+  text-align: center;
+  margin-bottom: 25px;
+
+  color: #6b7280;
+  font-weight: 600;
+}

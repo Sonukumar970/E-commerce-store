@@ -1,73 +1,65 @@
-import {
-  useSelector,
-  useDispatch,
-} from "react-redux";
+<div className="catalog-top">
+  <div className="filters">
+    <button
+      onClick={() =>
+        dispatch(
+          filterByCategory("electronics")
+        )
+      }
+    >
+      💻 Electronics
+    </button>
 
-import { Link } from "react-router-dom";
+    <button
+      onClick={() =>
+        dispatch(
+          filterByCategory(
+            "men's clothing"
+          )
+        )
+      }
+    >
+      👕 Men's
+    </button>
 
-import { removeFromWishlist } from "../features/wishlist/wishlistSlice";
+    <button
+      onClick={() =>
+        dispatch(
+          filterByCategory(
+            "women's clothing"
+          )
+        )
+      }
+    >
+      👗 Women's
+    </button>
 
-function Wishlist() {
-  const dispatch = useDispatch();
+    <button
+      onClick={() =>
+        dispatch(
+          filterByCategory(
+            "jewelery"
+          )
+        )
+      }
+    >
+      💍 Jewellery
+    </button>
 
-  const wishlistItems = useSelector(
-    (state) => state.wishlist.items
-  );
+    <button
+      onClick={() =>
+        dispatch(filterByPrice(100))
+      }
+    >
+      💲 Under $100
+    </button>
 
-  return (
-    <div className="wishlist-page">
-      <h1>❤️ My Wishlist</h1>
-
-      {wishlistItems.length === 0 ? (
-        <div className="empty-wishlist">
-          <h2>No Products In Wishlist</h2>
-        </div>
-      ) : (
-        wishlistItems.map((item) => (
-          <div
-            key={item.id}
-            className="wishlist-card"
-          >
-            <img
-              src={item.image}
-              alt={item.title}
-              className="wishlist-image"
-            />
-
-            <div className="wishlist-info">
-              <h3>{item.title}</h3>
-
-              <p>
-                Price: ${item.price}
-              </p>
-            </div>
-
-            <div className="wishlist-actions">
-              <Link
-                to={`/product/${item.id}`}
-                className="view-product-btn"
-              >
-                View Product
-              </Link>
-
-              <button
-                className="remove-wishlist-btn"
-                onClick={() =>
-                  dispatch(
-                    removeFromWishlist(
-                      item.id
-                    )
-                  )
-                }
-              >
-                Remove
-              </button>
-            </div>
-          </div>
-        ))
-      )}
-    </div>
-  );
-}
-
-export default Wishlist;
+    <button
+      onClick={() =>
+        dispatch(resetFilters())
+      }
+    >
+      🔄 All Products
+    </button>
+  </div>
+</div>

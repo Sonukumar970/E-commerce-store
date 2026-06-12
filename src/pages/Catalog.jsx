@@ -34,7 +34,7 @@ function Catalog() {
 
   return (
     <>
-      <h1>Product Catalog</h1>
+      <h1>🛍 Product Catalog</h1>
 
       <div className="filters">
         <button
@@ -46,7 +46,43 @@ function Catalog() {
             )
           }
         >
-          Electronics
+          💻 Electronics
+        </button>
+
+        <button
+          onClick={() =>
+            dispatch(
+              filterByCategory(
+                "men's clothing"
+              )
+            )
+          }
+        >
+          👕 Men's
+        </button>
+
+        <button
+          onClick={() =>
+            dispatch(
+              filterByCategory(
+                "women's clothing"
+              )
+            )
+          }
+        >
+          👗 Women's
+        </button>
+
+        <button
+          onClick={() =>
+            dispatch(
+              filterByCategory(
+                "jewelery"
+              )
+            )
+          }
+        >
+          💍 Jewellery
         </button>
 
         <button
@@ -54,7 +90,7 @@ function Catalog() {
             dispatch(filterByPrice(100))
           }
         >
-          Under $100
+          💲 Under $100
         </button>
 
         <button
@@ -62,9 +98,13 @@ function Catalog() {
             dispatch(resetFilters())
           }
         >
-          All Products
+          🔄 All Products
         </button>
       </div>
+
+      {/* <p className="product-count">
+        {products.length} Products Found
+      </p> */}
 
       <div className="grid">
         {products.map((product) => (
