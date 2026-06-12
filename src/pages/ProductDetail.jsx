@@ -10,6 +10,8 @@ import { addToCart } from "../features/cart/cartSlice";
 import { addToWishlist } from "../features/wishlist/wishlistSlice";
 import { addViewedProduct } from "../features/recentlyViewed/recentlyViewedSlice";
 
+import Reviews from "../components/Reviews";
+
 function ProductDetail() {
   const { id } = useParams();
 
@@ -21,6 +23,27 @@ function ProductDetail() {
         (p) => p.id === Number(id)
       )
   );
+
+  const dummyReviews = [
+    {
+      user: "Rahul",
+      rating: 5,
+      comment:
+        "Excellent product. Highly recommended!",
+    },
+    {
+      user: "Priya",
+      rating: 4,
+      comment:
+        "Good quality and fast delivery.",
+    },
+    {
+      user: "Amit",
+      rating: 5,
+      comment:
+        "Worth the money.",
+    },
+  ];
 
   useEffect(() => {
     if (product) {
@@ -51,13 +74,17 @@ function ProductDetail() {
             {product.category}
           </span>
 
-          <h1>
-            {product.title}
-          </h1>
+          <h1>{product.title}</h1>
 
           <h2 className="detail-price">
             ${product.price}
           </h2>
+
+          <p className="product-rating">
+            ⭐ {product.rating?.rate}
+            {" "}
+            ({product.rating?.count} Reviews)
+          </p>
 
           <p>
             {product.description}
@@ -79,9 +106,7 @@ function ProductDetail() {
               className="wishlist-btn"
               onClick={() =>
                 dispatch(
-                  addToWishlist(
-                    product
-                  )
+                  addToWishlist(product)
                 )
               }
             >
@@ -90,6 +115,10 @@ function ProductDetail() {
           </div>
         </div>
       </div>
+
+      <Reviews
+        reviews={dummyReviews}
+      />
     </div>
   );
 }

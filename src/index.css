@@ -948,3 +948,34 @@ h1 {
     flex-direction: column;
   }
 }
+.product-rating {
+  color: #f59e0b;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 12px 0 20px;
+}
+
+.reviews {
+  margin-top: 40px;
+}
+
+.reviews h2 {
+  margin-bottom: 20px;
+}
+
+.review-card {
+  background: white;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.08);
+}
+
+.review-card h4 {
+  margin-bottom: 8px;
+}
+
+.dark .review-card {
+  background: #1f2937;
+  color: white;
+}
